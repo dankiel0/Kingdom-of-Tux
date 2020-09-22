@@ -19,7 +19,7 @@ public class TempCharacter {
 		y = 0 * Util.tileSize;
 	}
 	
-	public void update(double elapsedTime) {
+	public void update() {
 		velocityX = 0;
 		velocityY = 0;
 		
@@ -40,8 +40,8 @@ public class TempCharacter {
 			velocityY = 145.0;
 		
 		// updating positions
-		x += velocityX * elapsedTime;
-		y += velocityY * elapsedTime;
+		x += velocityX;
+		y += velocityY;
 	}
 	
 	public void render(Graphics2D graphics) {

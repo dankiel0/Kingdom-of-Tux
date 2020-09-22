@@ -1,12 +1,12 @@
 package assets;
 
 import resource_loaders.ImageLoader;
-import spriteSheet.SpriteSheet;
+import spriteSheet.Spritesheet;
 
 public class Assets {
-	public static SpriteSheet playerSprite;
+	public static Spritesheet playerSprite;
 	
 	public static void init() {
-		playerSprite = new SpriteSheet(ImageLoader.loadImage("assets/tempPlayerSprite.png"), 1);
+		playerSprite = new Spritesheet(ImageLoader.loadImage("assets/tempPlayerSprite.png"), 64, 64);
 	}
 }

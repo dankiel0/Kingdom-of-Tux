@@ -19,7 +19,7 @@ public class RPG_main {
 		
 		// set active room to default room
 		// can be changed later
-		RoomManager.setActiveRoom(new DefaultRoom());
+		RoomManager.setRoom(new DefaultRoom());
 		
 		// starts game
 		rpgGame.start();

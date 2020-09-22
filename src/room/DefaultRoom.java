@@ -17,13 +17,13 @@ public class DefaultRoom extends Room {
 	
 	// updates character positions, and things like that
 	@Override
-	public void update(double elapsedTime) {
-		tempCharacter.update(elapsedTime);
+	public void update() {
+		tempCharacter.update();
 	}
 	
 	// draws character to the screen
 	@Override
-	public void render(Graphics2D graphics, double elapsedTime) {
+	public void render(Graphics2D graphics) {
 		tempCharacter.render(graphics);
 	}
 }
