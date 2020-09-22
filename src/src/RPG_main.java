@@ -15,7 +15,7 @@ public class RPG_main {
 		// makes game
 		// game constructor takes in window object
 		// window constructor takes in game name, width, and height
-		Game rpgGame = new Game(new Window("RPG", 500, 500));
+		Game rpgGame = new Game(new Window("RPG", 640, 640));
 		
 		// set active room to default room
 		// can be changed later
