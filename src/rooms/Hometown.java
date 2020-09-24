@@ -20,7 +20,7 @@ public class Hometown extends Room {
 	@Override
 	public void init() {
 		tileset = new Spritesheet(ImageLoader.loadImage("assets/exterior1.png"), 64, 64);
-		map = new Map("src/assets/tempMap.txt");
+		map = new Map("src/assets/hometown.txt");
 		camera = new Camera();
 		player = new Player();
 	}

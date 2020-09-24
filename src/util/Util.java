@@ -1,7 +1,7 @@
 package util;
 
 public class Util {
-	public static int tileSize = 32;
+	public static int tileSize = 64;
 	
 	
 	
