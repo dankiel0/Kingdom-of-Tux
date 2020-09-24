@@ -6,8 +6,8 @@ import java.util.Scanner; // Import the Scanner class to read text files
 
 public class Map {
 
-	private int width;
-	private int height;
+	private static int width;
+	private static int height;
 	private int[] indices; 							//Indices that match to certain tiles
 	private boolean[] solids;						//Binary value of 0 or 1 - 0 means not solid, 1 means solid
 
@@ -58,6 +58,7 @@ public class Map {
 		}
 		else {
 			return 0; //If parameters aren't within the map, or there's an error of some sort
+
 		}
 	}
 
@@ -69,10 +70,10 @@ public class Map {
 	}
 
 
-	public int getW() {
+	public static int getW() {
 		return width;
 	}
-	public int getH() {
+	public static int getH() {
 		return height;
 	}
 	
@@ -81,3 +82,5 @@ public class Map {
 //    }
 
 }
+
+

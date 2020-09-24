@@ -1,5 +1,6 @@
 package src;
 
+import assets.Assets;
 import game.Game;
 import room.RoomManager;
 import rooms.Hometown;
@@ -8,6 +9,8 @@ import window.Window;
 // driver class
 public class RPG_main {
 	public static void main(String[] args) {
+		
+		Assets.init();
 		// makes game
 		// game constructor takes in window object
 		// window constructor takes in game name, width, and height
@@ -20,4 +23,5 @@ public class RPG_main {
 		// starts game
 		rpgGame.start();
 	}
+	
 }

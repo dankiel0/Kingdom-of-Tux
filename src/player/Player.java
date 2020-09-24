@@ -4,17 +4,22 @@ import java.awt.Graphics2D;
 
 import camera.Camera;
 import eventListeners.Keyboard;
+import menu.Menu;
 import resource_loaders.ImageLoader;
 import room.RoomManager;
 import rooms.Hometown;
 import spriteSheet.Spritesheet;
+import util.Util;
+import util.Util.STATE;
 
 public class Player {
 	private Spritesheet playerSprite;
 	
 	private double velocityX, velocityY, x, y;
+	private Menu menu;
 	
 	public Player() {
+		menu = new Menu();
 		init();
 	}
 	
@@ -28,21 +33,34 @@ public class Player {
 	public void update(Camera camera) {
 		velocityX = velocityY = 0;
 		
-		// left movement - set velocityX to left
-		if(Keyboard.keys[37])
-			velocityX = -4.0;
+		if(Util.state == STATE.GAME) {
+			// left movement - set velocityX to left
+			if(Keyboard.keys[37])
+				velocityX = -4.0;
+			
+			// left movement - set velocityX to left
+			if(Keyboard.keys[38])
+				velocityY = -4.0;
+			
+			// left movement - set velocityX to left
+			if(Keyboard.keys[39])
+				velocityX = 4.0;
+			
+			// left movement - set velocityX to left
+			if(Keyboard.keys[40])
+				velocityY = 4.0;
+		}
 		
-		// left movement - set velocityX to left
-		if(Keyboard.keys[38])
-			velocityY = -4.0;
-		
-		// left movement - set velocityX to left
-		if(Keyboard.keys[39])
-			velocityX = 4.0;
-		
-		// left movement - set velocityX to left
-		if(Keyboard.keys[40])
-			velocityY = 4.0;
+		if(Keyboard.keys[88]) {
+			if(Util.state == STATE.GAME || Util.state == STATE.INVENTORY) {
+				Util.state = STATE.MENU;
+			}
+			else {
+				if(Util.state == STATE.MENU) {
+					Util.state = STATE.GAME;
+				}
+			}
+		}
 		
 		double newX = x + velocityX;
 		double newY = y + velocityY;
@@ -82,6 +100,9 @@ public class Player {
 	
 	public void render(Graphics2D graphics, Camera camera) {
 		playerSprite.render(graphics, x - (camera.getOffsetX() * 64.0), y - (camera.getOffsetY() * 64.0), 64, 64);
+		if(Util.state == STATE.MENU) {
+			menu.render(graphics);
+		}
 	}
 	
 	public double getX() {
