@@ -57,7 +57,11 @@ public class Map {
             return indices[y * width + x];
 		}
 		else {
+<<<<<<< HEAD
 			return 0; //If parameters aren't within the map, or there's an error of some sort
+=======
+			return 102970147; //If parameters aren't within the map, or there's an error of some sort
+>>>>>>> b6afccaf0e01f3642d79682a0e92e84402f31b1a
 		}
 	}
 
@@ -80,4 +84,8 @@ public class Map {
 //        new Map("src/map/hometown.txt");		For testing purposes
 //    }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b6afccaf0e01f3642d79682a0e92e84402f31b1a
