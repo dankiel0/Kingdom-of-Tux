@@ -24,4 +24,5 @@ public class RPG_main {
 		// starts game
 		rpgGame.start();
 	}
+	
 }
