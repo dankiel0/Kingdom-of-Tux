@@ -33,15 +33,15 @@ public class TempCharacter {
 		
 		// left movement - set velocityX to left
 		if(Keyboard.keys[37])
-			velocityX = -10.0;
+			velocityX = -145.0;
 		
 		// up movement - set velocityX to up
 		if(Keyboard.keys[38])
-			velocityY = -10.0;
+			velocityY = -145.0;
 		
 		// right movement - set velocityX to right
 		if(Keyboard.keys[39])
-			velocityX = 10.0;
+			velocityX = 145.0;
 		
 		// down movement - set velocityX to down
 		if(Keyboard.keys[40])
@@ -58,6 +58,7 @@ public class TempCharacter {
 				}
 			}
 		}
+			velocityY = 145.0;
 		
 		// updating positions
 		x += velocityX;
