@@ -1,6 +1,7 @@
 package player;
 
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 
 import camera.Camera;
 import eventListeners.Keyboard;
@@ -15,7 +16,7 @@ import util.Util.STATE;
 public class Player {
 	private Spritesheet playerSprite;
 	
-	private double velocityX, velocityY, x, y;
+	private double velocityX, velocityY, x, y, speed;
 	private Menu menu;
 	
 	public Player() {
@@ -32,26 +33,32 @@ public class Player {
 	
 	public void update(Camera camera) {
 		velocityX = velocityY = 0;
+		speed = 4.0;
 		
 		if(Util.state == STATE.GAME) {
+			// sprint key
+			if(Keyboard.keys[88]) 
+				speed = 8.0;
+			
 			// left movement - set velocityX to left
 			if(Keyboard.keys[37])
-				velocityX = -4.0;
+				velocityX = -speed;
 			
 			// left movement - set velocityX to left
 			if(Keyboard.keys[38])
-				velocityY = -4.0;
+				velocityY = -speed;
 			
 			// left movement - set velocityX to left
 			if(Keyboard.keys[39])
-				velocityX = 4.0;
+				velocityX = speed;
 			
 			// left movement - set velocityX to left
 			if(Keyboard.keys[40])
-				velocityY = 4.0;
+				velocityY = speed;
+			
 		}
 		
-		if(Keyboard.keys[88]) {
+		if(Keyboard.keys[KeyEvent.VK_ENTER]) {
 			if(Util.state == STATE.GAME || Util.state == STATE.INVENTORY) {
 				Util.state = STATE.MENU;
 			}
