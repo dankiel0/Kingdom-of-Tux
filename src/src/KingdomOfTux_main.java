@@ -15,7 +15,7 @@ import userInterface.BBlabel;
 import userInterface.BBpanel;
 
 // driver class
-public class RPG_main {
+public class KingdomOfTux_main {
 	public static void main(String[] args) {
 		// sets window.
 		Game.setWindow(new BBwindow("Game", 640, 640));
