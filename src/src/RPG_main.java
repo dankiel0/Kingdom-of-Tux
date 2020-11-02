@@ -17,27 +17,37 @@ import userInterface.BBpanel;
 // driver class
 public class RPG_main {
 	public static void main(String[] args) {
+		// sets window.
 		Game.setWindow(new BBwindow("Game", 640, 640));
+		
+		// sets room.
 		Game.setRoom(Town::new);
 		
+		// starts game.
 		Game.start();
 	}
 }
 
+// the town room.
 class Town extends Room {
+	// the panel ui.
 	private BBpanel panel;
 	
+	// is the panel visible.
 	private boolean panelVisible;
 	
+	// constucts a town.
 	public Town() {
+		// sets the town map.
 		setMap(new Map("src/hometown.map", new SpriteSheet(ImageLoader.loadImage("src/tiles.png"), 64, 64)));
 		
+		// inits ui.
 		BBbutton button1 = new BBbutton(0, 100, 150, 50, "Inventory");
 		
 		button1.onClick(KeyEvent.VK_Z, () -> {
 			System.out.println("Button 1 has been clicked!");
 		});
-		
+		 
 		BBbutton button2 = new BBbutton(0, 200, 150, 50, "Save");
 		
 		button2.onClick(KeyEvent.VK_Z, () -> {
@@ -49,22 +59,31 @@ class Town extends Room {
 	
 	@Override
 	public void update(double elapsedTime) {
+		// if the panel is invisible, update the player.
 		if(!panelVisible)
 			Player.player.update(elapsedTime);
 		
+		// if the space key is clicked, hide or show the panel.
 		if(Keyboard.keyClicked(KeyEvent.VK_SPACE))
 			panelVisible = !panelVisible;
 		
+		// if the panel is visible, update it.
 		if(panelVisible)
 			panel.update();
 	}
 	
 	@Override
 	public void render(Graphics2D graphics) {
+		// render the background.
 		getMap().renderBackground(graphics);
-		Player.player.render(graphics);
+		
+		// render the foreground.
 		getMap().renderForeground(graphics);
 		
+		// render the player.
+		Player.player.render(graphics);
+		
+		// if the panel is visible, render it.
 		if(panelVisible)
 			panel.render(graphics);
 	}
@@ -80,6 +99,7 @@ class Player {
 	private double velocityY;
 	
 	public Player() {
+		// initial position of the player.
 		x = 3;
 		y = 3;
 	}
@@ -89,33 +109,33 @@ class Player {
 		velocityY = 0;
 		
 		if(Keyboard.keyHeld(KeyEvent.VK_LEFT))
-			velocityX = -elapsedTime * 5;
+			velocityX = -elapsedTime * 6;
 		if(Keyboard.keyHeld(KeyEvent.VK_RIGHT))
-			velocityX = elapsedTime * 5;
+			velocityX = elapsedTime * 6;
 		
 		if(Keyboard.keyHeld(KeyEvent.VK_UP))
-			velocityY = -elapsedTime * 5;
+			velocityY = -elapsedTime * 6;
 		if(Keyboard.keyHeld(KeyEvent.VK_DOWN))
-			velocityY = elapsedTime * 5;
+			velocityY = elapsedTime * 6;
 		
 		double newX = x + velocityX;
 		double newY = y + velocityY;
 		
 		if(velocityX <= 0) {
-			if(Game.getRoom().getMap().getSolid((int) newX, (int) y) || Game.getRoom().getMap().getSolid((int) newX, (int) (y + 0.999))) {
+			if(Game.getRoom().getMap().getSolid((int) newX, (int) (y + 0.25)) || Game.getRoom().getMap().getSolid((int) newX, (int) (y + 0.999))) {
 				newX = (int) newX + 1;
 				velocityX = 0;
 			}
 		} else {
-			if(Game.getRoom().getMap().getSolid((int) (newX + 1), (int) y) || Game.getRoom().getMap().getSolid((int) (newX + 1), (int) (y + 0.999))) {
+			if(Game.getRoom().getMap().getSolid((int) (newX + 1), (int) (y + 0.25)) || Game.getRoom().getMap().getSolid((int) (newX + 1), (int) (y + 0.999))) {
 				newX = (int) newX;
 				velocityX = 0;
 			}
 		}
 		
 		if(velocityY <= 0) {
-			if(Game.getRoom().getMap().getSolid((int) newX, (int) newY) || Game.getRoom().getMap().getSolid((int) (newX + 0.999), (int) newY)) {
-				newY = (int) newY + 1;
+			if(Game.getRoom().getMap().getSolid((int) newX, (int) (newY + 0.25)) || Game.getRoom().getMap().getSolid((int) (newX + 0.999), (int) (newY + 0.25))) {
+				newY = ((int) newY) + 0.75;
 				velocityY = 0;
 			}
 		} else {
