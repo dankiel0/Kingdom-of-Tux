@@ -1,43 +1,29 @@
 package door;
 
-
 import game.Game;
 import game.room.Room;
 import player.Player;
 
 public class Door {
-	
-	private double x;
-	private double y;
-	private Player player;
-	private double px;
-	private double py;
-	
-	public Door(Player p, double doorx, double doory) {
-		player = p;
-		x = doorx;
-		y = doory;
-	}
-	 
-	public boolean onRoomTile() {
-		if(px >= x && px <= x + 64 && py >= y && py <= y + 16) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	
-	public void update(double elapsedTime) {
-		px = player.getX()*64;
-		System.out.println("x: " + px);
-		py = player.getY()*64;
-		System.out.println("y: " + py);
-	}
-	
-	public void changeRoom(Room newRoom, double x, double y) {
-		Game.setRoom(newRoom);
-		player.changePos(x, y);
+	private double doorX;
+	private double doorY;
+
+	public Door(double doorX, double doorY) {
+		this.doorX = doorX;
+		this.doorY = doorY;
 	}
 
+	public void checkCollisionWithDoor(Player player, Room newRoom, int newPlayerX, int newPlayerY) {
+		int playerX = (int) (player.getX() / 64) * 64;
+		int playerY = (int) (player.getY() / 64) * 64;
+
+		if (playerX == doorX && playerY == doorY) {
+			Game.setRoom(newRoom);
+			
+			System.out.println("true");
+			
+			player.setX(newPlayerX);
+			player.setY(newPlayerY);
+		}
+	}
 }
