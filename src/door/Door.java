@@ -30,9 +30,9 @@ public class Door {
 	
 	public void update(double elapsedTime) {
 		px = player.getX()*64;
-		System.out.println("x: " + px);
+//		System.out.println("x: " + px);
 		py = player.getY()*64;
-		System.out.println("y: " + py);
+//		System.out.println("y: " + py);
 	}
 	
 	public void changeRoom(Room newRoom, double x, double y) {
