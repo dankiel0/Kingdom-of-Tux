@@ -1,13 +1,8 @@
-package menu;
+package ui;
 
-//import java.awt.Graphics2D;
 import java.util.ArrayList;
 
-
-
-
 public class Inventory {
-	
 	private ArrayList<Item> inv;
 	
 	public Inventory() {
@@ -25,12 +20,4 @@ public class Inventory {
 	public Item getItem(int index) {
 		return inv.get(index);
 	}
-
-//	public void update(double elapsedTime) {
-//		
-//	}
-//	
-//	public void render(Graphics2D graphics) {
-//		
-//	}
 }

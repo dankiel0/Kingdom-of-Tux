@@ -9,33 +9,32 @@ import game.spritesheet.SpriteSheet;
 import map.Map;
 import player.Player;
 
-public class house1 extends Room {
-	private Door door1;
-
+public class HouseIndoors extends Room {
+	private Door houseDoor;
+	
 	// constucts a house.
-	public house1() {
+	public HouseIndoors() {
 		// sets the house map.
-		setMap(new Map("assets/test.map", new SpriteSheet(
-				ImageLoader.loadImage("assets/tiles.png"), 64, 64)));
-
-		door1 = new Door(5, 4);
+		setMap(new Map("assets/test.map", new SpriteSheet(ImageLoader.loadImage("assets/tileset.png"), 64, 64)));
+		
+		houseDoor = new Door(5, 3);
 	}
-
+	
 	@Override
 	public void update(double elapsedTime) {
 		Player.player.update(elapsedTime);
-
-		door1.checkCollisionWithDoor(Player.player, new Town(), 13, 10);
+		
+		houseDoor.checkCollisionWithDoor(Rooms.town, 13, 10);
 	}
-
+	
 	@Override
 	public void render(Graphics2D graphics) {
 		// render the background.
 		getMap().renderBackground(graphics);
-
+		
 		// render the player.
 		Player.player.render(graphics);
-
+		
 		// render the foreground.
 		getMap().renderForeground(graphics);
 	}

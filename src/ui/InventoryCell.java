@@ -1,8 +1,6 @@
-package menu;
+package ui;
 
 import java.awt.Graphics2D;
-
-import game.spritesheet.SpriteSheet;
 
 public class InventoryCell {
 	private double x;

@@ -1,4 +1,4 @@
-package menu;
+package ui;
 
 import game.spritesheet.SpriteSheet;
 

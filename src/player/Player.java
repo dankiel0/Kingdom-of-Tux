@@ -8,25 +8,24 @@ import game.input.Keyboard;
 
 public class Player {
 	public static Player player = new Player();
-
+	
 	private double x;
 	private double y;
-
+	
 	private double velocityX;
 	private double velocityY;
-
+	
 	public Player() {
 		// initial position of the player.
 		x = 3;
 		y = 3;
-
 	}
-
+	
 	public void changePos(double newX, double newY) {
 		x = newX;
 		y = newY;
 	}
-
+	
 	public void setX(double x) {
 		this.x = x;
 	}
@@ -38,28 +37,28 @@ public class Player {
 	public double getX() {
 		return x;
 	}
-
+	
 	public double getY() {
 		return y;
 	}
-
+	
 	public void update(double elapsedTime) {
 		velocityX = 0;
 		velocityY = 0;
-
+		
 		if (Keyboard.keyHeld(KeyEvent.VK_LEFT))
 			velocityX = -elapsedTime * 6;
 		if (Keyboard.keyHeld(KeyEvent.VK_RIGHT))
 			velocityX = elapsedTime * 6;
-
+		
 		if (Keyboard.keyHeld(KeyEvent.VK_UP))
 			velocityY = -elapsedTime * 6;
 		if (Keyboard.keyHeld(KeyEvent.VK_DOWN))
 			velocityY = elapsedTime * 6;
-
+		
 		double newX = x + velocityX;
 		double newY = y + velocityY;
-
+		
 		if (velocityX <= 0) {
 			if (Game.getRoom().getMap().getSolid((int) newX, (int) (y + 0.25))
 					|| Game.getRoom().getMap().getSolid((int) newX,
@@ -76,7 +75,7 @@ public class Player {
 				velocityX = 0;
 			}
 		}
-
+		
 		if (velocityY <= 0) {
 			if (Game.getRoom().getMap().getSolid((int) newX,
 					(int) (newY + 0.25))
@@ -93,15 +92,14 @@ public class Player {
 				velocityY = 0;
 			}
 		}
-
+		
 		x = newX;
 		y = newY;
-
+		
 		Game.getCamera().setPosition(x, y);
 	}
-
+	
 	public void render(Graphics2D graphics) {
-		graphics.fillRect((int) (((x - Game.getCamera().getX()) * 64)),
-				(int) (((y - Game.getCamera().getY()) * 64)), 64, 64);
+		graphics.fillRect((int) (((x - Game.getCamera().getX()) * 32)), (int) (((y - Game.getCamera().getY()) * 32)), 32, 32);
 	}
 }
