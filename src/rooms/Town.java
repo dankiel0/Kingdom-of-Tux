@@ -33,6 +33,7 @@ public class Town extends Room {
 			Player.player.update(elapsedTime);
 		
 		houseDoor.checkCollisionWithDoor(Rooms.houseIndoors, 5, 5);
+		System.out.println("hello");
 	}
 	
 	@Override
