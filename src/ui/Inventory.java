@@ -3,17 +3,14 @@ package ui;
 import java.util.ArrayList;
 
 public class Inventory {
-	
 	private ArrayList<Item> inv;
 	
 	public Inventory() {
 		inv = new ArrayList<Item>();
-		
 	}
 	
-	public void addItems(Item items, int quant) {
+	public void addItems(Item items) {
 		inv.add(items);
-		items.itemChange(quant);
 	}
 	
 	public int inventorySize() {
