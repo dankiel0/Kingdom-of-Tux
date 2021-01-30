@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 
 import game.Game;
 import game.input.Keyboard;
+import ui.Inventory;
 
 public class Player {
 	public static Player player = new Player();
@@ -14,6 +15,8 @@ public class Player {
 	
 	private double velocityX;
 	private double velocityY;
+	
+	public static Inventory inv = new Inventory();
 	
 	public Player() {
 		// initial position of the player.
