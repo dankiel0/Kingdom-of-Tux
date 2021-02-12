@@ -3,8 +3,10 @@ package player;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
+import battle.Stats;
 import game.Game;
 import game.input.Keyboard;
+import ui.EquipmentInventory;
 import ui.Inventory;
 
 public class Player {
@@ -16,9 +18,12 @@ public class Player {
 	private double velocityX;
 	private double velocityY;
 	
+	public static EquipmentInventory equipment = new EquipmentInventory();
+	public static Stats stats = new Stats(100, 10, 10, 10, 10, 40, 10);
 	public static Inventory inv = new Inventory();
 	
 	public Player() {
+		
 		// initial position of the player.
 		x = 3;
 		y = 3;

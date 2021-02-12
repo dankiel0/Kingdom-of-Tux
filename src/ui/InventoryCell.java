@@ -11,6 +11,7 @@ public class InventoryCell {
 	private int height;
 	
 	private Item item;
+	private Equipment equipment;
 	
 	public InventoryCell(double x, double y, int w, int h, Item item) {
 		this.x = x;
@@ -20,6 +21,22 @@ public class InventoryCell {
 		this.height = h;
 		
 		this.item = item;
+	}
+	public InventoryCell(double x, double y, int w, int h) {
+		this.x = x;
+		this.y = y;
+		
+		this.width = w;
+		this.height = h;
+	}
+	public InventoryCell(double x, double y, int w, int h, Equipment equipment) {
+		this.x = x;
+		this.y = y;
+		
+		this.width = w;
+		this.height = h;
+		
+		this.equipment  = equipment;
 	}
 	
 	public void render(Graphics2D graphics) {
@@ -49,5 +66,9 @@ public class InventoryCell {
 	
 	public Item getItem() {
 		return item;
+	}
+	
+	public Equipment getEquipment() {
+		return equipment;
 	}
 }
