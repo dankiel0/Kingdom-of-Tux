@@ -13,7 +13,10 @@ public class Menu {
 	private BBpanel panel;
 	private boolean panelVisible;
 	private boolean invVisible = false;
+	private boolean charVisible = false;
 	private InvUi invUI = new InvUi(); 
+	private CharacterUI charUI = new CharacterUI();
+	private boolean intKey = false;
 	
 	public Menu() {
 		// inits ui.
@@ -23,14 +26,13 @@ public class Menu {
 			invVisible = true;
 		});
 		
-		BBbutton button2 = new BBbutton(0, 110, 150, 50, "Save");
+		BBbutton button2 = new BBbutton(0, 110, 150, 50, "Character");
 		
 		button2.onClick(KeyEvent.VK_Z, () -> {
-			System.out.println("Button 2 has been clicked!");
+			charVisible = true;
 		});
 		
 		panel = new BBpanel(0, 240, 480, 240, new BBlabel(0, 0, 150, 50, "Menu"), button1, button2);
-		
 		
 		//temporary placement for testing
 		Player.inv.addItems(ItemList.A, 1);
@@ -48,8 +50,13 @@ public class Menu {
 	}
 	
 	public void update() {
+		if(Keyboard.keyClicked(KeyEvent.VK_SPACE) && charVisible) {
+			charVisible = !charVisible;
+			panelVisible = !panelVisible;
+			
+		}
 		// if the space key is clicked while the inventory is opened, it'll close the inventory and reopen the menu
-		if(Keyboard.keyClicked(KeyEvent.VK_SPACE) && invVisible) {
+		else if(Keyboard.keyClicked(KeyEvent.VK_SPACE) && invVisible) {
 			invVisible = !invVisible;
 			panelVisible = !panelVisible;
 		}
@@ -62,11 +69,19 @@ public class Menu {
 			panel.update();
 		
 		// if the inventory is visible, update it.
-		if(invVisible) {
+		if(invVisible && intKey == false) {
 			invUI.update();
 		}
 		
+		if(charVisible) {
+			charUI.update();
+		}
 		
+		
+	}
+	
+	public void key() {
+		intKey = !intKey;
 	}
 	
 	public void render(Graphics2D graphics) {
@@ -78,6 +93,19 @@ public class Menu {
 			panelVisible = false;
 			invUI.render(graphics);
 		}
+		if(charVisible) {
+			panelVisible = false;
+			invVisible = false;
+			charUI.render(graphics);
+		}
+		if(intKey) {
+			
+		}
+	}
+	
+	
+	public boolean isCharVisible() {
+		return charVisible;
 	}
 	
 	public boolean isMenuVisible() {
