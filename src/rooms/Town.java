@@ -8,11 +8,10 @@ import game.room.Room;
 import game.spritesheet.SpriteSheet;
 import map.Map;
 import player.Player;
-import ui.ItemList;
 import ui.Menu;
 
 public class Town extends Room {
-	public static Menu ui;
+	private Menu ui;
 	
 	private Door houseDoor;
 	
@@ -24,14 +23,13 @@ public class Town extends Room {
 		ui = new Menu();
 		
 		houseDoor = new Door(13, 8);
-		
 	}
 	
 	@Override
 	public void update(double elapsedTime) {
 		ui.update();
 		
-		if(!ui.isMenuVisible() && !ui.isInvVisible() && !ui.isCharVisible())
+		if(!ui.isVisible())
 			Player.player.update(elapsedTime);
 		
 		houseDoor.checkCollisionWithDoor(Rooms.houseIndoors, 5, 5);
