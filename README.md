@@ -1,2 +1,2 @@
 # RPG
-RPG Game
+An RPG Game made with stuGL
