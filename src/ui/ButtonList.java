@@ -21,6 +21,13 @@ public class ButtonList
 	{
 		buttons.add(button);
 	}
+	public void clearButtons() {
+		buttons.clear();
+	}
+	
+	public void changeButtonIndex(int num) {
+		selectedButtonIndex += num;
+	}
 	
 	public int buttonIndex() {
 		return selectedButtonIndex;

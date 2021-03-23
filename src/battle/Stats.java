@@ -10,11 +10,13 @@ public class Stats {
 	 * Speed determines who attacks first
 	 */
 	
+	private int maxHP;
 	private int hp;
 	private int patk;
 	private int matk;
 	private int pdef;
 	private int mdef;
+	private int maxMP;
 	private int mp;
 	private int spd;
 	//XP and level stuff for player and party members, useless for enemies and stuff
@@ -23,14 +25,16 @@ public class Stats {
 	private int lvlupXP = 500;
 	
 	
-	public Stats(int health, int physatk, int magatk, int physdef, int magdef, int magpoints, int speed) {
+	public Stats(int mHP, int health, int physatk, int magatk, int physdef, int magdef, int maxMP, int magpoints, int speed)  {
 		hp = health;
 		patk = physatk;
 		matk = magatk;
 		pdef = physdef;
 		mdef = magdef;
+		this.maxMP = maxMP;
 		mp = magpoints;
 		spd = speed;
+		maxHP = mHP;
 	}
 	
 	// These methods are to get the individual stats
@@ -55,6 +59,12 @@ public class Stats {
 	public int getSpd() {
 		return spd;
 	}
+	public int getMaxHP() {
+		return maxHP;
+	}
+	public int getMaxMP() {
+		return maxMP;
+	}
 	//These methods are to change individual stats -> mainly for equipment purposes
 	//Positive value to add stat points, negative value to remove stat points
 	public void changeHp(int amount) {
@@ -78,6 +88,12 @@ public class Stats {
 	public void changeSpd(int amount) {
 		spd += amount;
 	}
+	public void changeMaxHP(int amount) {
+		maxHP += amount;
+	}
+	public void changeMaxMP(int amount) {
+		maxMP += amount;
+	}
 	
 	public void addXP(int amount) {
 		xp += amount;
@@ -91,12 +107,12 @@ public class Stats {
 	public void lvlUp() {
 		level += 1;
 		// This increases all of the player's stats by some number between 1-3 inclusive; This could probably be optimized
-		hp += (int)(Math.random() * (3) + 1);
+		maxHP += (int)(Math.random() * (3) + 1);
 		patk += (int)(Math.random() * (3) + 1);
 		matk += (int)(Math.random() * (3) + 1);
 		pdef += (int)(Math.random() * (3) + 1);
 		mdef += (int)(Math.random() * (3) + 1);
-		mp += (int)(Math.random() * (3) + 1);
+		maxMP += (int)(Math.random() * (3) + 1);
 		spd += (int)(Math.random() * (3) + 1);
 	}
 	

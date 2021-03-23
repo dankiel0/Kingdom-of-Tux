@@ -19,7 +19,7 @@ public class Player {
 	private double velocityY;
 	
 	public static EquipmentInventory equipment = new EquipmentInventory();
-	public static Stats stats = new Stats(100, 10, 10, 10, 10, 40, 10);
+	public static Stats stats = new Stats(100, 80, 10, 10, 10, 10, 40, 30, 10);
 	public static Inventory inv = new Inventory();
 	
 	public Player() {

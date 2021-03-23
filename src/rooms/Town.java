@@ -31,7 +31,7 @@ public class Town extends Room {
 	public void update(double elapsedTime) {
 		ui.update();
 		
-		if(!ui.isMenuVisible() && !ui.isInvVisible() && !ui.isCharVisible())
+		if(!ui.isMenuVisible() && !ui.isInvVisible() && !ui.isCharVisible() && !ui.isIntVisible() && !ui.isUeVisible())
 			Player.player.update(elapsedTime);
 		
 		houseDoor.checkCollisionWithDoor(Rooms.houseIndoors, 5, 5);

@@ -5,24 +5,24 @@ import player.Player;
 
 public class Equipment extends Item {
 	
-	private int hp;
+	private int maxHP;
 	private int patk;
 	private int matk;
 	private int pdef;
 	private int mdef;
-	private int mp;
 	private int spd;
+	private int maxMP;
 	private String itemType;
 	
 	//Creates an armor piece - There will be 4 pieces of armor: Helmet, Chestpiece, Legwear, Boots
-	public Equipment(String itemName, String description, int itemQuantity, int itemWorth, SpriteSheet icon, int spriteI, int health, int physatk, int magatk, int physdef, int magdef, int mpts, int speed, String itemtype) {
+	public Equipment(String itemName, String description, int itemQuantity, int itemWorth, SpriteSheet icon, int spriteI, int maxhealth, int physatk, int magatk, int physdef, int magdef, int maxmp, int speed, String itemtype) {
 		super(itemName, description, itemQuantity, itemWorth, icon, spriteI);
-		hp = health;
+		maxHP = maxhealth;
 		patk = physatk;
 		matk = magatk;
 		pdef = physdef;
 		mdef = magdef;
-		mp = mpts;
+		maxMP = maxmp;
 		spd = speed;
 		itemType = itemtype;
 	}
@@ -33,23 +33,30 @@ public class Equipment extends Item {
 	public String getItemType() {
 		return itemType;
 	}
+	public boolean isEquipment() {
+		return true;
+	}
 	
 	public void wearEquipment() {
-		Player.stats.changeHp(hp);
+		System.out.println("Success");
+		Player.stats.changeMaxHP(maxHP);
 		Player.stats.changeMAtk(matk);
 		Player.stats.changeMDef(mdef);
-		Player.stats.changeMP(mp);
+		Player.stats.changeMaxMP(maxMP);
 		Player.stats.changePAtk(patk);
 		Player.stats.changePDef(pdef);
 		Player.stats.changeSpd(spd);
 	}
 	public void removeEquipment() {
-		Player.stats.changeHp(-hp);
+		Player.stats.changeMaxHP(-maxHP);
 		Player.stats.changeMAtk(-matk);
 		Player.stats.changeMDef(-mdef);
-		Player.stats.changeMP(-mp);
+		Player.stats.changeMaxMP(-maxMP);
 		Player.stats.changePAtk(-patk);
 		Player.stats.changePDef(-pdef);
 		Player.stats.changeSpd(-spd);
+		if(Player.stats.getHp() > Player.stats.getMaxHP()) {
+			Player.stats.changeHp(-(Player.stats.getHp() - Player.stats.getMaxHP()));
+		}
 	}
 }

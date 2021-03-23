@@ -44,16 +44,17 @@ public class Item {
 		return spriteIndex;
 	}
 	
+	public boolean isEquipment() {
+		return false;
+	}
+	public boolean isConsumable() {
+		return false;
+	}
+	
 	// Adds or remove items
 	public void itemChange(int quant) {
-		if(quant > 0) {
-			quantity += quant;
-		}
-		else {
-			if(quantity > 0) {
-				quantity -= quant;
-			}
-		}
+		quantity += quant;
+		
 	}
 	
 }
