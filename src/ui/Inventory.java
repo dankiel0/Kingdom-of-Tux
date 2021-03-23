@@ -8,6 +8,7 @@ public class Inventory {
 	
 	public Inventory() {
 		inv = new ArrayList<Item>();
+		
 	}
 	
 	public void addItems(Item items, int quant) {
