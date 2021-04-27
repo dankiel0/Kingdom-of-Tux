@@ -47,6 +47,7 @@ public class Item {
 	public boolean isEquipment() {
 		return false;
 	}
+	
 	public boolean isConsumable() {
 		return false;
 	}
@@ -54,7 +55,5 @@ public class Item {
 	// Adds or remove items
 	public void itemChange(int quant) {
 		quantity += quant;
-		
 	}
-	
 }

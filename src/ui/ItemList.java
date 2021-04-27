@@ -19,9 +19,4 @@ public class ItemList {
 	public static Item L = new Item("L", "A basic wooden sword", 0, 50, new SpriteSheet(ImageLoader.loadImage("assets/itemsprites.png"), 32, 32), 12);
 	public static Item M = new Item("M", "A basic wooden sword", 0, 50, new SpriteSheet(ImageLoader.loadImage("assets/itemsprites.png"), 32, 32), 13);
 	public static Item N = new Item("N", "A basic wooden sword", 0, 50, new SpriteSheet(ImageLoader.loadImage("assets/itemsprites.png"), 32, 32), 14);
-	
-	
-	
-	
-
 }

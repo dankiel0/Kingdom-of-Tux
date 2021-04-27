@@ -15,16 +15,16 @@ public class HouseIndoors extends Room {
 	// constucts a house.
 	public HouseIndoors() {
 		// sets the house map.
-		setMap(new Map("assets/test.map", new SpriteSheet(ImageLoader.loadImage("assets/tileset.png"), 64, 64)));
+		setMap(new Map("assets/indoors.map", new SpriteSheet(ImageLoader.loadImage("assets/indoors.png"), 32, 32)));
 		
-		houseDoor = new Door(5, 3);
+		houseDoor = new Door(8, 10);
 	}
 	
 	@Override
 	public void update(double elapsedTime) {
 		Player.player.update(elapsedTime);
 		
-		houseDoor.checkCollisionWithDoor(Rooms.town, 13, 10);
+		houseDoor.checkCollisionWithDoor(Rooms.town, 19, 8);
 	}
 	
 	@Override

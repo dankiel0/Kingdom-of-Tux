@@ -14,7 +14,7 @@ public class Menu {
 	private BBpanel panel;
 	private boolean panelVisible;
 	
-	private InvUi invUI = new InvUi(); 
+	private InvUi invUI = new InvUi();
 	private boolean invVisible = false;
 	
 	private CharacterUI charUI = new CharacterUI();
@@ -26,6 +26,31 @@ public class Menu {
 	private UnequipUI ueUI = new UnequipUI();
 	private boolean ueVisible = false;
 	
+	// enemies
+	// edwin
+	// christian cornwall
+	// mannpal
+	
+	// HashMap<String, Item> items = new HashMap<Item>();
+	// items.add("Apple1", new Item());
+	// items.add("Apple2", new Item());
+	// items.add("Apple3", new Item());
+	// items.add("Apple5", new Item());
+	// items.add("Apple4", new Item());
+	// items.add("Apple6", new Item());
+	// items.add("Apple7", new Item());
+	
+	// Player.inv.addItem(items.get("Apple"));
+	// "Apple" -> new Item("Apple");
+	// for (Item item : Player.inv) {
+	//   if (item.getName().equals("Potion"))
+	//      item.increase
+	//   else Player.inv.add(hashmap.get("Potion"));
+	// }
+	
+	// HashMap<String, Attack> attacks = new HashMap<String, Attack>();
+	
+	// attacks.get("Punch") -> 10
 	
 	public Menu() {
 		// inits ui.
@@ -43,8 +68,6 @@ public class Menu {
 		
 		panel = new BBpanel(0, 240, 480, 240, new BBlabel(0, 0, 150, 50, "Menu"), button1, button2);
 		
-		
-		
 		//temporary placement for testing
 		if(Player.inv.inventorySize() == 0) {
 			Player.inv.addItems(ItemList.A, 2);
@@ -61,7 +84,6 @@ public class Menu {
 			Player.inv.addItems(ItemList.L, 1);
 			Player.inv.addItems(ItemList.J, 1);
 		}
-		
 	}
 	
 	public void update() {
@@ -169,7 +191,6 @@ public class Menu {
 	public InvUi getInvUI() {
 		return invUI;
 	}
-
 	
 	public void changeInvButtonIndex() {
 		invUI.getButtonList().changeButtonIndex(-1);
@@ -194,9 +215,11 @@ public class Menu {
 	public boolean isMenuVisible() {
 		return panelVisible;
 	}
+	
 	public boolean isInvVisible() {
 		return invVisible;
 	}
+	
 	public boolean isUeVisible() {
 		return ueVisible;
 	}

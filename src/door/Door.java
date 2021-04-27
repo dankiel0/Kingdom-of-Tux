@@ -13,7 +13,7 @@ public class Door {
 		this.doorY = doorY;
 	}
 	
-	public void checkCollisionWithDoor(Room newRoom, int newPlayerX, int newPlayerY) {
+	public void checkCollisionWithDoor(Room newRoom, double newPlayerX, double newPlayerY) {
 		int playerX = (int) Player.player.getX();
 		int playerY = (int) Player.player.getY();
 		
